@@ -13,6 +13,7 @@ func main() {
 	database.Initialize()
 
 	app.Use(middleware.ValidateAuth)
+	routes.Location(app.Group("locations"))
 	routes.User(app.Group("user"))
 
 	app.Listen(3000)

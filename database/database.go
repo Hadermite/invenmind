@@ -18,5 +18,7 @@ func Initialize() {
 	Connection.AutoMigrate(
 		&model.User{},
 		&model.AuthToken{},
+		&model.Location{},
+		&model.LocationUser{},
 	)
 }
