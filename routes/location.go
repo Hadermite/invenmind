@@ -21,7 +21,11 @@ func Location(router *fiber.Group) {
 	router.Get("", func(c *fiber.Ctx) {
 		var user = c.Locals("user").(model.User)
 		var locations []model.Location
-		database.Connection.Table("locations").Joins("INNER JOIN location_users ON location_users.location_id = locations.id").Where("location_users.user_id = ?", user.ID).Find(&locations)
+		database.Connection.
+			Table("locations").
+			Joins("INNER JOIN location_users ON location_users.location_id = locations.id").
+			Where("location_users.user_id = ?", user.ID).
+			Find(&locations)
 		c.JSON(&locations)
 	})
 
